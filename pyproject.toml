@@ -9,6 +9,7 @@ packages = [{include = "imz_engineer"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 fastapi = {extras = ["all"], version = "^0.88.0"}
+pre-commit = "^2.20.0"
 
 
 [build-system]
