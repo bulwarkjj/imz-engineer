@@ -1,8 +1,11 @@
 # Notes, findings, and other related learned information for FastApi
 ## INDEX  
-- [run app locally](#run-app-locally)  
-- [URLs](#urls)
-- [pydantic](#pydantic-module)
+- [Notes, findings, and other related learned information for FastApi](#notes-findings-and-other-related-learned-information-for-fastapi)
+  - [INDEX](#index)
+    - [Run App Locally](#run-app-locally)
+    - [URLS](#urls)
+    - [PyDantic module](#pydantic-module)
+    - [Jinja2Templates](#jinja2templates)
 
 ### Run App Locally 
 ```uvicorn app.main:app --reload```  
@@ -20,3 +23,10 @@
 ### PyDantic module
 - I'm using the module ```pydantic`` in [main.py](/app/main.py) which does instant data validation for my endpoint which lifts some heavy work off my shoulders.  This done by typing hints and at runtime (using the swagger api interactive docs) it will provide intuitive error messages.  
   - pydantic comes with some helpful pre-built models like ```BaseModel``` and ```Field``` that I can use to easily create a page model for the app that includes things like field lengths, etc.
+
+### Jinja2Templates
+- this is a module for linking and using HTML pages for the app project
+  - ```response_class=HTMLResponse``` allows the docs to know that the response will be HTML
+  - you have to pass ```request``` as part of the key-value pairs in the context which means I will have to also declare it in my path operation. 
+  - If I wanted to pass along context data i.e ```{id}```, I would use template-tagging format in my HTML pages i.e ```{{ id }}```
+  - Still playing around with this, but so far I have been able to create a home page with a nav-bar (using bootstrap) in [main.py](../app/main.py)
