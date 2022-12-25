@@ -10,6 +10,7 @@ packages = [{include = "imz_engineer"}]
 python = "^3.10"
 fastapi = {extras = ["all"], version = "^0.88.0"}
 pre-commit = "^2.20.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 
 
 [build-system]
