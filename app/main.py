@@ -1,47 +1,21 @@
 """ 
 main app for project
 """
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, Field
-import uuid
+from fastapi import FastAPI, Request
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 
-# TODO add logging for proper debugging.
 
 app = FastAPI()
+templates = Jinja2Templates(directory="templates")
 
-class Book(BaseModel):
-    """ 
-    Inheriting BaseModel to create a book object for POST operations
-    """
-    id: uuid.UUID
-    title: str = Field(min_length=1)
-    author: str = Field(min_length=1, max_length=100)
-    description: str = Field(min_length=1, max_length=100)
-    rating: int = Field(gt=-1, lt=101)
 
-BOOKS = []
+# TODO add logging for better debugging
 
-@app.get("/")
-async def read_api():
-    return BOOKS
+# TODO create signup model and HTML page
 
-@app.post("/")
-async def create_book(book: Book):
-    BOOKS.append(book)
-    return book
+# TODO create login model and HTML page
 
-@app.put("/{book_id}")
-async def update_book(book_id: uuid.UUID, book: Book):
-    """ 
-    take in a path parameter of a UUID and a nook request body
-    """
-    counter = 0
-    for item in BOOKS:
-        counter += 1
-        if item.id == book_id:
-            BOOKS[counter - 1] == book
-            return BOOKS[counter - 1]
-    raise HTTPException(
-        status_code=404,
-        detail=f"ID {book_id} : Does not exist."
-    )
+@app.get("/", response_class=HTMLResponse)
+def home_page(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
