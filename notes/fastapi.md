@@ -1,12 +1,14 @@
 # Notes, findings, and other related learned information for FastApi
 ## INDEX  
-- [Notes, findings, and other related learned information for FastApi](#notes-findings-and-other-related-learned-information-for-fastapi)
-  - [INDEX](#index)
+- Notes, findings, and other related learned information for FastApi
+    - [Youtude learning video](#youtube-video)
     - [Run App Locally](#run-app-locally)
     - [URLS](#urls)
     - [PyDantic module](#pydantic-module)
     - [Jinja2Templates](#jinja2templates)
-
+### Youtube video
+- [Video URL](https://www.youtube.com/watch?v=0sOvCWFmrtA)
+- stopped at 1:02:32
 ### Run App Locally 
 ```uvicorn app.main:app --reload```  
 - this will run the app in my linklocal address, great for debugging, seeing changes realtime. 
